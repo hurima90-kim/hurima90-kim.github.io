@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "React TDD 코드 작성법"
-date: 2021-10-27 00:531:00
+date: 2021-10-27 00:53:00
 categories: React TDD
 ---
 
