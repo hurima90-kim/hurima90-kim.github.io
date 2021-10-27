@@ -1,0 +1,138 @@
+---
+layout: post
+title: "MVC 패턴이란?"
+date: 2021-10-27 11:11:00
+categories: JavaScript
+---
+
+<h3>📌 var, let, const 차이점</h3><br>
+
+<h4>🔸 중복선언</h4><br>
+1.var (중복선언가능)<br>
+
+```javascript
+var a = 10;
+console.log(a); // 10
+
+var a = 20;
+console.log(a); // 20
+```
+
+var로 선언한 변수는 중복선언이 가능하며, 마지막에 할당된 값이 변수에 저장됩니다.<br><br>
+2.const / let (중복선언불가)<br>
+
+```javascript
+let a = 10;
+let a = 20; // Uncaught SyntaxError: Identifier 'a' has already been declared
+
+const b = 10;
+const b = 20; // Uncaught SyntaxError: Identifier 'a' has already been declared
+```
+
+let, const로 선언한 변수는 중복선언이 불가능하며, 위 코드에서 보는 것과 같이 SyntaxError가 발생한다.<br><br>
+
+<h4>🔸 재할당</h4><br>
+1.var, let (재할당가능)<br>
+
+```javascript
+var a = 10;
+a = 20;
+console.log(a); // 20
+
+let b = 30;
+b = 40;
+console.log(b); // 40
+```
+
+변수 선언 및 초기화 이후에 반복해서 값을 재할당 할 수 있습니다.<br><br>
+2.const (재할당불가)<br>
+
+```javascript
+const c = 50;
+c = 60; // Uncaught TypeError: Assignment to constant variable.
+```
+
+변수 선언 및 초기화 이후에 반복해서 값을 재할당 할 수 없습니다.<br><br>
+
+<h4>🔸 스코프(Scope)</h4>
+스코프란 유효한 참조 범위를 뜻합니다. 자세한 설명은 생략하겠습니다.<br><br>
+1.var (함수 레벨 스코프)<br>
+
+```javascript
+function func() {
+  if (true) {
+    var a = 5;
+    console.log(a); // 5
+  }
+  console.log(a); // 5
+}
+
+func(); // 5
+console.log(a); // ReferenceError: a is not defined
+```
+
+함수 내에서 선언된 변수는 함수내에서만 유효하며, 외부에서는 참조할 수 없습니다.<br>
+즉, 함수 내부에서 선언한 변수는 지역 변수이고 함수외부에서 선언한 변수는 모두 전역변수가 됩니다.<br><br>
+2.const, let (블록 레벨 스코프)<br>
+
+```javascript
+function func() {
+  if (true) {
+    let a = 5;
+    console.log(a); // 5
+  }
+  console.log(a); // ReferenceError: a is not defined
+}
+
+console.log(a); // ReferenceError: a is not defined
+```
+
+모든 코드 블록 { ... } 내부에서 선언된 변수는 코드 블록 내에서만 유효하며, 코드 블록 외부에서는 참조할 수 없습니다.<br>
+즉, 코드 블록 내부에서 선언한 변수는 지역 변수가 됩니다.<br><br>
+
+<h4>🔸 호이스팅(Hoisting)</h4>
+호이스팅이란 함수 내부에 있는 선언들을 모두 끌어올려 해당 함수 유효 범위의 최상단에 선언하는 것을 뜻함. 자세한 설명은 생략하겠습니다.<br><br>
+1.var (함수선언문)<br>
+
+```javascript
+/* 변수 호이스팅 */
+console.log(a); // undefined
+
+var a = 5;
+console.log(a); // 5
+
+foo(); // foo
+
+function foo() {
+  console.log("foo");
+}
+```
+
+변수 a가 선언되기 전에 참조되었어도 에러가 발생하지 않습니다.<br>
+코드 실행전에 자바스크립트 내부에서 미리 변수를 선언하고 undefined로 초기화를 해두었기 때문입니다.<br>
+함수선언문 또한 동일하기에 에러가 발생하지 않습니다.<br><br>
+
+2.const, let (함수표현식)<br>
+
+```javascript
+/* 변수 호이스팅 */
+console.log(a); // ReferenceError: a is not defined
+
+let a = 5;
+console.log(a); // 5
+
+/* 함수 호이스팅 */
+foo(); // error
+
+var foo = function () {
+  console.log("foo");
+};
+```
+
+변수 a가 선언되기 전에 참조를 하니 에러가 발생합니다.<br>
+함수표현식을 사용하거나 let 또는 const 로 변수를 선언하는 경우,<br>
+자바스크립트 내부에서는 코드 실행 전 변수 선언만 해둘뿐 초기화는 코드 실행 과정에서 변수 선언문을 만났을 때 수행합니다.<br>
+호이스팅이 발생하지만, 값을 참조할 수 없어 동작하지 않는 것 처럼 보이는 것일 뿐입니다.<br><br>
+
+<h3>📝 마무리</h3>
+처음에는 그저 ES6로 업데이트 됬으니 이걸 사용해야겠다라고 막연하게 생각하고 무심코 사용했었는데 사용하다보니 이전과 다른점이 많아 찾아보게 되었고 지금은 let, const만 사용하고 있습니다. 굉장히 늦게 블로그에 작성하지만 글을 쓰며 다시 보니 또 깜빡하던걸 다시 기억하게 되네요. 😝
