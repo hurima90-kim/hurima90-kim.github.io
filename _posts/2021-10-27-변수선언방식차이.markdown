@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MVC 패턴이란?"
+title: "var, let, const의 차이"
 date: 2021-10-27 11:11:00
 categories: JavaScript
 ---
