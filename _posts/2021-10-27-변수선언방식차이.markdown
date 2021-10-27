@@ -5,9 +5,10 @@ date: 2021-10-27 11:11:00
 categories: JavaScript
 ---
 
-<h3>📌 var, let, const 차이점</h3><br>
-
-<h4>🔸 중복선언</h4><br>
+<h3>📌 var, let, const 차이점</h3>
+기본적으로 ES5 까지의 변수선언은 var로 정의되었고 ES6부터 let과 const로도 변수 선언을 할 수 있게 되었습니다.<br>
+변수 정의의 세가지 방법의 차이점에 대해 정리해 보았습니다.<br><br>
+<h4>🔸 중복선언</h4>
 1.var (중복선언가능)<br>
 
 ```javascript
@@ -31,7 +32,7 @@ const b = 20; // Uncaught SyntaxError: Identifier 'a' has already been declared
 
 let, const로 선언한 변수는 중복선언이 불가능하며, 위 코드에서 보는 것과 같이 SyntaxError가 발생한다.<br><br>
 
-<h4>🔸 재할당</h4><br>
+<h4>🔸 재할당</h4>
 1.var, let (재할당가능)<br>
 
 ```javascript
