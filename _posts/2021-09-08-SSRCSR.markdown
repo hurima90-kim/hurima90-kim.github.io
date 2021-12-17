@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "SSR과 CSR의 차이"
-date: 2021-09-08 00:53:00
+date: 2021-09-08 22:45:00
 categories: CS IT지식
 ---
 
