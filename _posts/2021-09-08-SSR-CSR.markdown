@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "SSR과 CSR의 차이"
+title: "SSR과 CSR의 차이는 무엇인가?"
 date: 2021-09-08 00:53:00
-categories: CS
+categories: CS지식
 ---
 
 <h3>📌 SSR이란 무엇인가요?</h3>
@@ -33,11 +33,8 @@ categories: CS
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: gray">React환경에서 이 단점극복을 위해 Next.js 라이브러리 사용을 선호합니다.</span><br><br>
 
 <h3>📝 마무리</h3>
-Flux패턴이 적용된 Redux를 사용하면서 장단점 파악을 다시 한번 해봐야 알 것 같다.<br>
-다만 대규모 어플리케이션을 개발이나 운영해보지않다보니 장단점이 뚜렷하게 들어날까 걱정이 되지만<br>
-안해보는 것보다 해보는 게 백번 이해가 빠를테니... 다음에는 리덕스를 사용해보겠습니다.<br><br>
+CSR과 SSR이 무엇인지, 어떤 차이가 있는지? 프론트엔드 기술면접에서 상당히 자주 출제되기도 합니다.<br>
+간략하게라도 알아두고 면접을 보게되면 굉장히 유용할 것 같습니다.<br>
+프론트엔드 개발자라면 당연히 알아야 할 내용이기도 하구요 ^^;<br><br>
 
 <h3>👀 Reference</h3>
-
-<a>https://bestalign.github.io/translation/cartoon-guide-to-flux/</a><br><br>
-<a>https://facebook.github.io/flux/docs/in-depth-overview</a>
