@@ -81,13 +81,13 @@ footer - 꼬리말(선택 사항)<br>
 
 <h4>🔸 Body (본문)</h4>
 커밋 메시지 내용 중 본문은 선택 사항이기 때문에 본문 내용을 꼭 작성할 필요는 없습니다.<br>
-작성을 할 경우 다음 규칙을 지킵니다.<br><br>
+작성을 할 경우 다음 규칙을 지킵니다.<br>
 1. 본문은 한 줄 당 72자 내로 작성합니다.<br>
 2. 내용은 양에 구애받지 않고 최대한 상세히 작성합니다.<br>
 3. 어떻게 변경했는지가 아닌 무엇을, 왜 변경했는지를 설명합니다.<br><br>
 
 <h4>🔸 Footer (꼬리말)</h4>
-꼬리말도 본문과 같이 선택 사항이며 대체로 이슈를 추적하기 위해 이슈(#id)를 넣어주는 용도로 사용합니다.<br><br>
+꼬리말도 본문과 같이 선택 사항이며 대체로 이슈를 추적하기 위해 이슈(#id)를 넣어주는 용도로 사용합니다.<br>
 1. 꼬리말은 "유형: #이슈id" 형식으로 사용합니다.<br>
 2. 여러 개의 이슈id를 작성할 때는 쉼표로 구분합니다.<br>
 3. 이슈 트래커 유형은 다음 중 하나를 사용합니다.<br>
@@ -97,35 +97,27 @@ footer - 꼬리말(선택 사항)<br>
 &nbsp;&nbsp;&nbsp;- Related to: 해당 커밋에 관련된 이슈 번호(미해결)<br><br>
 
 <h4>🔸 커밋 메시지 사용 예시</h4>
-아래 예시는 <a href="https://udacity.github.io/git-styleguide/">유다시티 커밋 메시지 컨벤션</a>에서 제공해주는 예시입니다.<br><br>
+아래 예시는 <a href="https://udacity.github.io/git-styleguide/">유다시티 커밋 메시지 컨벤션</a>에서 제공해주는 예시입니다.<br>
 <div style="border: 1px solid gray; padding: 20px">
-    
-    feat: Summarize changes in around 50 characters or less
-
+    feat: Summarize changes in around 50 characters or less<br><br>
     More detailed explanatory text, if necessary. Wrap it to about 72
     characters or so. In some contexts, the first line is treated as the
     subject of the commit and the rest of the text as the body. The
     blank line separating the summary from the body is critical (unless
     you omit the body entirely); various tools like `log`, `shortlog`
-    and `rebase` can get confused if you run the two together.
-
+    and `rebase` can get confused if you run the two together.<br><br>
     Explain the problem that this commit is solving. Focus on why you
     are making this change as opposed to how (the code explains that).
     Are there side effects or other unintuitive consequences of this
-    change? Here's the place to explain them.
-
-    Further paragraphs come after blank lines.
-
-    - Bullet points are okay, too
-
+    change? Here's the place to explain them.<br><br>
+    Further paragraphs come after blank lines.<br>
+    - Bullet points are okay, too<br>
     - Typically a hyphen or asterisk is used for the bullet, preceded
     by a single space, with blank lines in between, but conventions
-    vary here
-
+    vary here<br><br>
     If you use an issue tracker, put references to them at the bottom,
-    like this:
-
-    Resolves: #123
+    like this:<br><br>
+    Resolves: #123<br>
     See also: #456, #789
 
 </div><br><br>
