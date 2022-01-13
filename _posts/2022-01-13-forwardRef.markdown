@@ -13,14 +13,14 @@ categories: React
 <h4>🔸 시작하기전에</h4>
 부모 컴포넌트에서 자식 컴포넌트의 DOM을 컨트롤하기 위해 ref를 전달하는데 전달하는 방법은 여러가지가 있습니다. 오늘은 그중에 하나인 forwardRef에 대해 알아보겠습니다.<br><br>
 
-```Javascript
+```javascript
 //부모 컴포넌트
 function App() {
   const inputRef = useRef(null);
 
   const onFocus = () => {
     inputRef.current.focus();
-  }
+  };
 
   return (
     <React.Fragment>
@@ -45,7 +45,7 @@ const Input = ({ ref }) => {
 
 forwardRef를 사용한 예제를 한번 보시죠.<br>
 
-```Javascript
+```javascript
 import React, { forwardRef } from "react";
 
 const Input = forwardRef((props, ref) => {

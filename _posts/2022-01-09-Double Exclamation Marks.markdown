@@ -13,22 +13,22 @@ JavaScript 공부가 많이 부족하다는걸 느꼈습니다.<br>
 
 자바스크립트의 논리연산자 중 NOT연산자인 (느낌표)는 입력값을 boolean으로 변환하여 값이 true이면 false로 , false이면 true로 값을 리턴합니다.<br><br>
 
-```Javascript
-null // null
-!null // true
-!!null // false
+```javascript
+null; // null
+!null; // true
+!!null; // false
 
-true // true
-!true // false
-!!true // true
+true; // true
+!true; // false
+!!true; // true
 
-false // false
-!false // true
-!!false // false
+false; // false
+!false; // true
+!!false; // false
 
-777 // 777
-!777 // false
-!!777 // true
+777; // 777
+!777; // false
+!!777; // true
 ```
 
 조건문에서 논리연산자를 사용하면 부정의 부정은 긍정이라는 조건식에는 변함이 없습니다.<br>
@@ -38,22 +38,21 @@ false // false
 
 다시 예제를 한번 보시면, 이해가 빠르실 것 같습니다.<br>
 
-```Javascript
+```javascript
 let a = 0;
-console.log(a);   // 0
-console.log(!a);  // true
+console.log(a); // 0
+console.log(!a); // true
 console.log(!!a); // false
 
 let b = null;
-console.log(b);   // null
-console.log(!b);  // true
+console.log(b); // null
+console.log(!b); // true
 console.log(!!b); // false
 
 let c = undefined;
-console.log(c);   // undefined
-console.log(!c);  // true
+console.log(c); // undefined
+console.log(!c); // true
 console.log(!!c); // false
-
 ```
 
 <h3>📝 마무리</h3>
