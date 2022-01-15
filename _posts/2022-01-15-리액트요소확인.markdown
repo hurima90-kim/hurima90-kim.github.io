@@ -1,0 +1,53 @@
+---
+layout: post
+title: "React.isValidElement: 리액트 엘리먼트 확인하기"
+date: 2022-01-15 02:17:00
+categories: React
+---
+
+<h3>📌 React.isValidElement란 무엇인가?</h3>
+<!-- <h4>❗️ 주의사항</h4> -->
+
+<h4>🔸 시작하기전에</h4>
+React에서 제공하는 API 중 리액트 요소를 검증하는 isValidElement() API에 대하여 알아봅니다.<br><br>
+
+<h4>🔸 React.isValidElement()</h4>
+리액트 엘리먼트를 검증하고 확인하기 위해서 다음의 API를 사용할 수 있습니다.<br>
+
+```javascript
+React.isValidElement(object);
+```
+
+객체가 React 엘리먼트인지 확인합니다. true 또는 false를 반환합니다.<br><br>
+
+<h4>🔸 언제 isValidElement를 사용할까요?</h4>
+컴포넌트를 통해 전달 받은 엘리먼트 요소가 있을때, 전달 받은 엘리먼트를 현재의 컴포넌트에 추가해야 할 경우가 있다면? 리액트 요소인지의 여부를 판단하고 append 하기 위해 isValidElement()를 사용할 수 있습니다.<br>
+
+결과가 true인 경우 정상적으로 사용할 수 있는 리액트 요소임을 검증할 수 있을 것입니다.<br><br>
+
+<h4>🔸 간단한 예시코드</h4>
+
+```javascript
+const App = ({ children }) => {
+  return (
+    <Container>
+      {React.Children.map(children, (child, index) => {
+        return React.isValidElement(child)
+          ? React.cloneElement(child, { index })
+          : null;
+      })}
+    </Container>
+  );
+};
+
+export default App;
+```
+
+컴포넌트 사이에 요소를 전달받으려면 위 코드와 같이 isValidElement가 true일 경우에 렌더링을 하고 false일 경우엔 null값으로 아무것도 렌더링을 하지 않게 할 수 있습니다.
+
+<h3>📝 마무리</h3>
+이렇게 React API중 isValidElement에 대해 알아보았습니다.
+
+<h3>📝 참조</h3>
+<a href="https://webisfree.com/2020-08-26/[react]-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EC%9A%94%EC%86%8C-%EA%B2%80%EC%A6%9D%ED%95%98%EA%B8%B0-isvalidelement">webisfree 블로그</a><br>
+<a href="hhttps://ko.reactjs.org/docs/react-api.html">리액트 공식 문서</a>
