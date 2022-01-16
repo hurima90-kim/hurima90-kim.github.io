@@ -1,0 +1,71 @@
+---
+layout: post
+title: "Zustand 간단하게 살펴보기"
+date: 2022-01-16 02:17:00
+categories: React
+---
+
+<h3>📌 Zustand란 무엇인가?</h3>
+<!-- <h4>❗️ 주의사항</h4> -->
+<img src="https://user-images.githubusercontent.com/66353903/149652102-f0a73fa7-0d73-4e9c-a91b-afbef5dcaa66.png" alt="zustand">
+<h4>🔸 시작하기전에</h4>
+<span style="color: lightblue">"전역상태관리"</span> 하면 어떤 것들이 떠오르시나요?<br>
+Redux, Recoil, ContextAPI, MobX 등 다양한 것들이 있죠<br>
+저 또한 Redux를 사용해왔고, 가장 보편적으로 사용하고 있는게 아닐까 싶은데요.<br>
+오늘은 새로운 상태관리 라이브러리인 "Zustand"에 대해 알아보겠습니다.<br><br>
+
+<h4>🔸 Zustand의 특징</h4>
+- 특정 라이브러리에 엮이지 않는다. (그래도 React와 함께 쓸 수 있는 API는 기본적으로 제공한다.)<br>
+- 한 개의 중앙에 집중된 형식의 스토어 구조를 활용하면서, 상태를 정의하고 사용하는 방법이 단순하다.<br>
+- Context API를 사용할 때와 달리 상태 변경 시 불필요한 리랜더링을 일으키지 않도록 제어하기 쉽다.<br>
+- React에 직접적으로 의존하지 않기 때문에 자주 바뀌는 상태를 직접 제어할 수 있는 방법도 제공한다. (Transient Update라고 한다.)<br>
+- 동작을 이해하기 위해 알아야 하는 코드 양이 아주 적다. 핵심 로직의 코드 줄 수가 약 42줄밖에 되지 않는다. (VanillaJS 기준)<br>
+<br><br>
+
+<h4>🔸 간단한 사용방법 예시코드</h4>
+간단한 예시코드를 보면서 사용방법에 대해 알아보겠습니다.<br><br>
+
+```javascript
+import React from "react";
+import create from "zustand";
+import { devtools } from "zustand/middleware";
+
+const [useStore] = create(
+  devtools((set) => ({
+    count: 0,
+    inc: () => set((state) => ({ count: state.count + 1 })),
+    dec: () => set((state) => ({ count: state.count - 1 })),
+  }))
+);
+
+function App() {
+  const count = useStore((state) => state.count);
+  const { inc, dec } = useStore();
+
+  return (
+    <React.Fragment>
+      <span>{count}</span>
+      <button onClick={inc}>increase</button>
+      <button onClick={dec}>decrease</button>
+    </React.Fragment>
+  );
+}
+
+export default App;
+```
+
+1. 스토어를 만들 때는 create 함수를 이용하여 상태와 그 상태를 변경하는 액션을 정의한다. 그러면 리액트 컴포넌트에서 사용할 수 있는 useStore 훅을 리턴한다.<br>
+2. set은 현재 state를 받아 새로운 state를 반환하는 함수를 인자로 받습니다.<br>
+3. 컴포넌트에서 useStore 훅을 사용할 때는 스토어에서 상태를 어떤 형태로 꺼내올지 결정하는 셀렉터 함수를 전달해 주어야 한다. 만약 셀렉터 함수를 전달하지 않는다면 스토어 전체가 리턴된다.<br><br>
+
+Redux와 비교해보았을때 코드가 굉장히 짧고 간결하죠?<br>
+저는 Redux를 공부할때 러닝커브가 높은편이라고 생각이 들어서 공부하는데 애먹었던 기억이 있는데 그에 비해 굉장히 간결해서 편해서 좋은 것 같습니다.<br>
+물론... 저도 현재 회사에서 zustand를 사용하기에 공부하는 것이지만 살짝 행복합니다 ㅎㅎ<br><br>
+
+<h3>📝 마무리</h3>
+아참...!zustand는 redux-devtools를 사용할 수 있으니 개발할떄 굉장히 편리할 것 같습니다.
+
+<h3>📝 참조</h3>
+<a href="https://velog.io/@augusty/Zustand-%EB%A6%AC%EC%95%A1%ED%8A%B8%EC%97%90%EC%84%9C%EC%9D%98-Redux-%EC%96%B4%EB%A0%B5%EA%B2%8C-%EC%93%B0%EC%A7%80%EB%A7%88%EC%84%B8%EC%9A%94">augusty님의 블로그</a><br>
+<a href="https://ui.toast.com/weekly-pick/ko_20210812">Toast UI팀 기술블로그</a>
+<a href="https://github.com/pmndrs/zustand">zustand 공식문서</a>
