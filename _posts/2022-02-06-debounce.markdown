@@ -1,0 +1,104 @@
+---
+layout: post
+title: 'Lodash의 debounce는 무엇인가?'
+date: 2022-02-06 02:17:00
+categories: React
+---
+
+<h3>📌 Lodash의 debounce는 무엇인가?</h3>
+<!-- <h4>❗️ 주의사항</h4> -->
+<!-- <img src="https://user-images.githubusercontent.com/66353903/150132836-8aa37d1e-ae51-4fec-b739-74a415e97d8d.png" alt="cbor"><br><br> -->
+<h4>🔸 시작하기전에</h4>
+오늘은 Lodash의 debounce가 무엇인지 알아보겠습니다.<br><br>
+
+<h4>🔸 Lodash란 무엇인가??</h4>
+<span style="color: lightblue">Lodash</span>는 자바스크립트의 라이브러리로서 Array, Collection, date등 데이터의 필수적인 구조를 쉽게 다루기 위해 사용합니다.<br>
+쉽게 말해 유틸함수를 모아서 제공해주는 라이브러리가 Lodash이고 굉장히 인기가 많은 자바스크립트 라이브러리입니다.<br><br>
+
+<h4>🔸 Lodash 설치 방법</h4>
+
+Using npm
+
+```
+$ npm install lodash --save
+```
+
+In Node.js
+
+```javascript
+const _ = require('lodash');
+```
+
+그 밖의 자세한 설치방법은 <a href="https://lodash.com/">Lodash 공식문서</a>를 확인해주세요.<br><br>
+
+<h4>🔸 debounce란 무엇인가??</h4>
+
+1. 특정 이벤트가 발생할 때 동작하는 로직이 과도하게 발생하는 것을 방지하기위해 사용되는 함수입니다.<br>
+2. Input Box에 검색어를 입력할 때 마다 서버에서 연관된 정보를 불러와 보여주는 기능을 구현할 때 사용합니다.<br>
+3. 마지막 이벤트가 호출된 이후 일정시간이 지난 후 함수를 지연호출시키는 역활을 합니다.<br><br>
+
+<h4>🔸 간단한 사용예시</h4><br>
+
+- debounce 적용전 코드
+
+```javascript
+function App() {
+  const [text, setText] = useState('');
+
+  const onChangeText = (e) => {
+    const value = e.target.value;
+
+    setText(value);
+    console.log('키보드 누름');
+  };
+
+  return (
+    <div>
+      <label>
+        <span>입력창</span>
+        <input type="text" value={text} onChange={onChangeText} />
+      </label>
+    </div>
+  );
+}
+```
+
+- debounce 적용후 코드
+
+```javascript
+const debouceChange = debounce(() => {
+  console.log('디바운스 적용 후 키보드 누름');
+}, 200);
+
+function App() {
+  const [text, setText] = useState('');
+
+  const onChangeText = (e) => {
+    const value = e.target.value;
+
+    setText(value);
+    //  console.log('키보드 누름');
+    debounceChange();
+  };
+
+  return (
+    <div>
+      <label>
+        <span>입력창</span>
+        <input type="text" value={text} onChange={onChangeText} />
+      </label>
+    </div>
+  );
+}
+```
+
+직접 입력해서 콘솔을 확인해보면 어떤 차이가 있는지 확실히 알 수 있습니다.<br><br>
+
+<h3>📝 마무리</h3>
+오늘은 간단하게 Lodash의 debounce에 대해서 알아보았습니다.<br>
+짧은 코드로 컴포넌트의 성능을 향상 시킬수 있는 좋은 라이브러리입니다.<br>
+debounce는 이벤트가 끝날때까지 기다렸다가 시작되기에 한번만 실행되도록 하는 것이 효과적입니다.<br>
+다음에는 lodash의 throttle에 대해 포스팅하도록 하겠습니다.<br><br>
+
+<h3>📝 참조</h3>
+<a href="https://lodash.com/">Lodash 공식문서</a>
