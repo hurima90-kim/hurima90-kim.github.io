@@ -6,7 +6,7 @@ categories: React Next.js MUI
 ---
 
 <h3>📌 Next.js로 정적 웹사이트만들때 MUI적용하기</h3>
-
+<img src="https://user-images.githubusercontent.com/66353903/153414482-9d70b417-038b-4de3-a183-d5b72b4d3e47.png" alt="cbor" style="width: 100%; height: 250px; object-fit: cover;"><br><br>
 <h4>🔸 시작하기전에</h4>
 Next.js로 정적 웹사이트를 만들때 MUI(v5)를 적용하는 방법에 대해 알아보려고 합니다.<br><br>
 

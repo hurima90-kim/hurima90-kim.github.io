@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Zustand 간단하게 살펴보기"
+title: 'Zustand 간단하게 살펴보기'
 date: 2022-01-16 02:17:00
 categories: React
 ---
 
 <h3>📌 Zustand란 무엇인가?</h3>
 <!-- <h4>❗️ 주의사항</h4> -->
-<img src="https://user-images.githubusercontent.com/66353903/149652102-f0a73fa7-0d73-4e9c-a91b-afbef5dcaa66.png" alt="zustand">
+<img src="https://user-images.githubusercontent.com/66353903/149652102-f0a73fa7-0d73-4e9c-a91b-afbef5dcaa66.png" alt="zustand" style="width: 100%; height: 250px; object-fit: contain;">
 <h4>🔸 시작하기전에</h4>
 <span style="color: lightblue">"전역상태관리"</span> 하면 어떤 것들이 떠오르시나요?<br>
 Redux, Recoil, ContextAPI, MobX 등 다양한 것들이 있죠<br>
@@ -26,9 +26,9 @@ Redux, Recoil, ContextAPI, MobX 등 다양한 것들이 있죠<br>
 간단한 예시코드를 보면서 사용방법에 대해 알아보겠습니다.<br><br>
 
 ```javascript
-import React from "react";
-import create from "zustand";
-import { devtools } from "zustand/middleware";
+import React from 'react';
+import create from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 const [useStore] = create(
   devtools((set) => ({
