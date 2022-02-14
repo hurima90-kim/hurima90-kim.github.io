@@ -1,0 +1,83 @@
+---
+layout: post
+title: '레르나(Lerna)로 모노레포구성하기'
+date: 2022-02-14 02:17:00
+categories: Lerna Monorepo
+---
+
+<h3>📌 레르나(Lerna)로 모노레포구성하기</h3>
+<h4>🔸 시작하기전에</h4>
+최근 회사에서 버전업데이트를 준비하면서 기존의 모놀리스방식을 모노레포방식으로 변경하면서 모노레포에 대해 알아보려합니다.<br><br>
+
+<img src="https://miro.medium.com/max/1382/0*joulAAdTFGe-chHP.png" alt="cbor" style="width: 100%; height: 300px; object-fit: contain;">
+<figcaption style="display: flex; justify-content: center;">이미지 출처: <a href='https://simsimjae.medium.com/%EB%AA%A8%EB%85%B8%EB%A0%88%ED%8F%AC-252d7f11c6fa'>심재철님의 기술블로그</a></figcaption><br><br>
+
+프로젝트 구조를 구성하는 방식 3가지가 위의 이미지에 나와있습니다. `모놀리스` `멀티레포` `모노레포`<br><br>
+
+1. `모놀리스` 구조는 하나의 레포지토리안에 여러개의 서비스가 단순히 폴더로 구성됩니다.
+2. `멀티레포` 구조는 하나의 레포지토리안에 하나의 서비스가 각각 나뉘어져 하나의 package를 이룹니다.
+3. `모노레포` 구조는 하나의 레포지토리안에 공통 package가 있고 그 안에 여러개의 packages로 구성됩니다.<br><br>
+
+<h4>🔸 모노레포</h4>
+다시 말해서 모노레포란 2개 이상의 프로젝트 코드를 하나의 레포지토리에서 관리하는 기법입니다.<br><br>
+
+<h4>🔸 그렇다면 모노레포는 언제 사용하는게 좋은가?</h4>
+다들 아시다시피 프로젝트의 초반에는 깊이 있는 설계를 하는 것보다는 사용자들에게 유용한 기능들을 빠르게 만드는 것이 우선이고, 그 다음 제대로 설계를 하는 것이 좋습니다.<br>
+기획을 할 때 모든 요구사항이 명확하게 정해지고 그대로 끝까지 이루어지지 않고 계속 수정되기에 리팩토링을 할 때 하는 것이 좋다고 생각합니다.<br><br>
+
+<h4>🔸 모노레포의 장점</h4>
+
+1. 패키지별로 배포가 쉬워진다.<br>
+   루트 레포지토리에 package1과 package2가 있을 경우, package1에 새로운 기능이 추가되고 커맨드를 입력하면 package2에 문제가 일어나지않고 package1이 배포가 됩니다.<br><br>
+
+2. 의존성관리가 간편해진다.<br>
+   개발에 사용되는 도구들을 설정하고 사용하는 것이 하나의 레포지토리에서 이루어지기에, 이를 각 패키지마다 확장시켜 사용해 설정의 중복을 줄이고 재사용성을 높일수 있습니다. 공통적으로 사용되는 것들을 Root의 package.json의 devDependencies에 두고 사용함으로써 동일한 버전의 도구들을 사용하여 외부 의존성 관리도 수월해집니다.<br><br>
+
+3. 하나의 커밋으로 이루어져 이슈관리가 간편해진다.<br>
+   멀티레포의 경우 각각의 레포지토리에서 따로 커밋이나 이슈등록을 해야하는반면 모노레포방식은 하나의 레포지토리안에 여러개의 패키지들이 있어 하나의 브랜치에를 통해 여러 패키지들의 작업을 진행할 수 있습니다. 이로 인해 연관된 작업들의 변경사항을 추척하고 관리하기가 수월해집니다.<br><br>
+
+4. 각 각의 서브패키지가 독립적이며, 서로 공유가 가능하다.<br>
+   각 서브패키지들은 `심볼릭링크`로 연결하는데 연결이 되어있다는 뜻은 package1의 수정사항이 package2에 바로 반영이 된다는 것입니다. 배포를 하지 않고서도 바로 반영이 되기때문에 개발 생산성이 굉장히 좋아집니다.<br><br>
+
+<h4>🔸 Lerna(레르나)</h4>
+현재 회사에서 진행하고 있는 모노레포의 환경은 <a href="https://lerna.js.org/">Lerna</a>라는 모노레포 관리 도구를 이용해 구성되어 있습니다. Lerna는 git과 npm기반 모노레포 환경의 작업을 도와주는 도구로 여러 커맨드를 가지고 있습니다.<br><br>
+
+```javascript
+// 의존성 연결
+$ lerna bootstrap (각 패키지의 npm install 실행 후 모노레포 내 연관된 패키지의 심볼릭링크 설정)
+
+// 실행
+$ lerna run (각 패키지의 package.json에 정의된 scripts를 실행)
+
+// 배포
+$ lerna publish (배포를 하기 위해 패키지들의 버전을 변경하고 npm에 배포)
+```
+
+<h4>🔸 Lerna(레르나)를 활용한 모노레포 구성</h4>
+
+```
+Repository/
+
+- node_modules
+- packages
+
+    - package1
+      package.json
+
+    - package2
+      package.json
+
+    - package3
+      package.json
+
+- lerna.json
+- package.json
+```
+
+위와 같은 형태로 Repository안에 루트 패키지가 존재하고, 루트 패키지 안에는 `packages` 폴더로 구분된 서브 패키지들이 있습니다. 따라서 각 서브 패키지에 있는 `package.json`으로 독립적인 의존성 관리가 가능해지며, 공통으로 관리되는 Dependency는 루트의 package.json으로 관리됩니다.
+
+<h3>📝 참조</h3>
+<a href="https://en.wikipedia.org/wiki/Monorepo">Monorepo</a><br>
+<a href="https://lerna.js.org/">Lerna 공식문서</a><br>
+<a href="https://simsimjae.medium.com/%EB%AA%A8%EB%85%B8%EB%A0%88%ED%8F%AC-252d7f11c6fa">심재철님의 기술블로그</a><br>
+<a href="https://tech.kakao.com/2020/12/03/frontend-growth-03/">카카오테크</a>
