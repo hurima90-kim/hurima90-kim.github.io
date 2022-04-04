@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 'Webpack이란 무엇인가?'
-date: 2022-03-09 00:53:00
-categories: CS지식 Webpack
+title: '웹팩(Webpack)이란 무엇인가?'
+date: 2022-03-10 02:17:00
+categories: CS Webpack
 ---
 
 <h3>📌 Webpack이란 무엇인가요?</h3>
