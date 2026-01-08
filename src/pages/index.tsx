@@ -1,4 +1,5 @@
 import { graphql, PageProps } from 'gatsby'
+import Layout from '../components/common/Layout'
 
 export default function Index({
   data: {
@@ -6,15 +7,24 @@ export default function Index({
   },
 }: PageProps<Queries.IndexPageQuery>) {
   return (
-    <div>
+    <Layout>
       {nodes.map(({ title, slug, date }) => (
         <div key={slug}>
           {title} / {date} / {slug}
         </div>
       ))}
-    </div>
+    </Layout>
   )
 }
+
+export const Head = () => (
+  <link
+    rel="stylesheet"
+    as="style"
+    crossOrigin="anonymous"
+    href="<https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css>"
+  />
+)
 
 export const query = graphql`
   query IndexPage {
