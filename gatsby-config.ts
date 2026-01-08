@@ -13,6 +13,9 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   jsxRuntime: 'automatic',
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     {
       resolve: 'gatsby-source-contentful',
