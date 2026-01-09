@@ -40,13 +40,17 @@ export default function Header() {
     <Wrapper>
       <Title to="/">Developer Kim</Title>
       <Menu>
-        <a href="#" target="_blank">
+        <a
+          href="https://github.com/hurima90-kim"
+          target="_blank"
+          rel="noreferrer"
+        >
           <AiFillGithub />
         </a>
-        <a href="#" target="_blank">
+        <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
           <AiOutlineInstagram />
         </a>
-        <a href="#" target="_blank">
+        <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
           <AiFillLinkedin />
         </a>
       </Menu>
