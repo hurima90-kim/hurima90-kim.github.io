@@ -5,8 +5,10 @@ dotenv.config()
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `주니어 개발자 킴의 테크블로그`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `주니어 개발자 킴의 테크 블로그`,
+    description: `주니어 개발자 킴의 성장과정을 담아두는 기술 블로그입니다.`,
+    author: `Developer Kim`,
+    siteUrl: `https://hurima90-kim.github.io`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
