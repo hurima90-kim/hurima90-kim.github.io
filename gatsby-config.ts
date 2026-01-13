@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+const SITE_URL = 'https://hurima90-kim.github.io'
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `주니어 개발자 킴의 테크 블로그`,
@@ -38,6 +40,19 @@ const config: GatsbyConfig = {
         path: './src/images/',
       },
       __key: 'images',
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: SITE_URL,
+        stripQueryString: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
     },
   ],
 }
