@@ -43,7 +43,12 @@ const options: Options = {
   renderNode: {
     ...HEADERS.reduce<{ [block: string]: NodeRenderer }>((nodes, header) => {
       nodes[header] = (node, children) => (
-        <Heading type={header}>{children}</Heading>
+        <Heading
+          type={header}
+          id={`${(node.content[0] as Text).value.replaceAll(' ', '-')}_`}
+        >
+          {children}
+        </Heading>
       )
 
       return nodes
