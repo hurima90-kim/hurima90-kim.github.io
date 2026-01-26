@@ -61,7 +61,7 @@ export const query = graphql`
         }
         description {
           description
-        }      }
+        }      
       }
     }
   }
