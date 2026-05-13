@@ -34,6 +34,12 @@ const Content = styled.div`
   line-height: 2;
   word-break: break-word;
 
+  img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
   @media (max-width: 768px) {
     gap: 50px;
     font-size: 14px;
