@@ -29,9 +29,11 @@ jobs:
         env:
           NODE_ENV: production
 
-      # Lighthouse CI (선택)
+      # Lighthouse CI
       - uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
             http://localhost:9000
+          serverCommand: npm run serve
           uploadArtifacts: true
+          temporaryPublicStorage: true
