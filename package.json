@@ -27,6 +27,7 @@
     "gatsby-plugin-sharp": "^5.15.0",
     "gatsby-plugin-sitemap": "^6.15.0",
     "gatsby-plugin-styled-components": "^6.15.0",
+    "gatsby-remark-images": "^7.16.0",
     "gatsby-source-filesystem": "^5.15.0",
     "gatsby-transformer-sharp": "^5.15.0",
     "prismjs": "^1.30.0",

@@ -51,6 +51,16 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 800,
+              quality: 80,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
         mdxOptions: {
           rehypePlugins: [rehypeSlug],
         },
