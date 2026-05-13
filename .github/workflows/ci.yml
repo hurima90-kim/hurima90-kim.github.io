@@ -30,11 +30,16 @@ jobs:
       - run: npx eslint src --ext .ts,.tsx
 
       # Lighthouse CI (빌드 결과물 재사용)
+      - name: Start Gatsby serve
+        run: npm run serve &
+
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:9000 --timeout 60000
+
       - uses: treosh/lighthouse-ci-action@v11
         with:
           configPath: ./.lighthouserc.json
           urls: |
             http://localhost:9000
-          serverCommand: npm run serve
           uploadArtifacts: true
           temporaryPublicStorage: true
