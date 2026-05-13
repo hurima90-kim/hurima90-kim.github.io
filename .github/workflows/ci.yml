@@ -18,18 +18,18 @@ jobs:
 
       - run: npm ci
 
-      # TypeScript 타입 체크 (package.json에 이미 있음)
+      # 빌드 먼저 실행 - .cache/gatsby-types.d.ts 생성 (Queries 네임스페이스 포함)
+      - run: npm run build
+        env:
+          NODE_ENV: production
+
+      # TypeScript 타입 체크 (빌드 후 gatsby-types.d.ts 존재)
       - run: npm run typecheck
 
       # ESLint
       - run: npx eslint src --ext .ts,.tsx
 
-      # 빌드 검증
-      - run: npm run build
-        env:
-          NODE_ENV: production
-
-      # Lighthouse CI
+      # Lighthouse CI (빌드 결과물 재사용)
       - uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
