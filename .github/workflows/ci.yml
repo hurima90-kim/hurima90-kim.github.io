@@ -32,6 +32,7 @@ jobs:
       # Lighthouse CI (빌드 결과물 재사용)
       - uses: treosh/lighthouse-ci-action@v11
         with:
+          configPath: ./.lighthouserc.json
           urls: |
             http://localhost:9000
           serverCommand: npm run serve
