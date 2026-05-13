@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
 
 concurrency:
   group: deploy
@@ -37,4 +37,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public # gatsby build 결과물
+          publish_dir: ./public
+          publish_branch: main
