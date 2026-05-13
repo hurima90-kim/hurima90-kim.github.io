@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import useTableOfContents from '../../hooks/useTableOfContents'
 
 type TableOfContentsProps = {
-  content: Queries.ContentfulPostContent
+  tableOfContents: unknown
 }
 
 const Wrapper = styled.div`
@@ -44,20 +44,20 @@ const Item = styled(({ className, children, to }: GatsbyLinkProps<unknown>) => (
 `
 
 export default function TableOfContents({
-  content: { raw },
+  tableOfContents,
 }: TableOfContentsProps) {
-  const { toc, activeId } = useTableOfContents(raw as string)
+  const { toc, activeId } = useTableOfContents(tableOfContents)
 
   return (
     <Wrapper>
       <Title>Table of Contents</Title>
       <Items>
-        {toc.map(({ id, title, depth }) => (
+        {toc.map(({ url, title, depth }) => (
           <Item
-            to={`#${id}`}
-            key={id}
+            to={url}
+            key={url}
             $depth={depth}
-            $focused={id === activeId}
+            $focused={url === `#${activeId}`}
           >
             {title}
           </Item>

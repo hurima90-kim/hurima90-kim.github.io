@@ -7,14 +7,14 @@ import SEO from '../components/common/Seo'
 
 export default function Index({
   data: {
-    allContentfulPost: { nodes },
+    allMdx: { nodes },
   },
 }: PageProps<Queries.IndexPageQuery>) {
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
 
   const categories = nodes.reduce<Record<string, number>>(
     (categories, post) => {
-      post.category
+      post.frontmatter?.category
         ?.filter((category): category is string => !!category)
         .forEach(
           category => (categories[category] = (categories[category] ?? 0) + 1),
@@ -25,8 +25,9 @@ export default function Index({
   )
 
   const posts = nodes.filter(
-    ({ category }) =>
-      selectedCategory === 'All' || category?.includes(selectedCategory),
+    ({ frontmatter }) =>
+      selectedCategory === 'All' ||
+      frontmatter?.category?.includes(selectedCategory),
   )
 
   const handleSelectCategory = (category: string) => {
@@ -50,17 +51,19 @@ export const Head: HeadFC = () => <SEO />
 
 export const query = graphql`
   query IndexPage {
-    allContentfulPost(sort: { date: DESC }) {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
       nodes {
-        title
-        category
-        slug
-        date
-        thumbnail {
-          gatsbyImageData(width: 500)
-        }
-        description {
+        frontmatter {
+          title
+          category
+          slug
+          date
           description
+          thumbnail {
+            childImageSharp {
+              gatsbyImageData(width: 500)
+            }
+          }
         }
       }
     }

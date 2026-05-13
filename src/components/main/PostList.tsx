@@ -4,8 +4,23 @@ import { MasonryInfiniteGrid } from '@egjs/react-infinitegrid'
 import PostItem from './PostItem'
 import { useEffect, useState } from 'react'
 
+type MdxNode = {
+  frontmatter?: {
+    title?: string | null
+    date?: string | null
+    category?: (string | null)[] | null
+    slug?: string | null
+    description?: string | null
+    thumbnail?: {
+      childImageSharp?: {
+        gatsbyImageData?: IGatsbyImageData | null
+      } | null
+    } | null
+  } | null
+}
+
 type PostListProps = {
-  posts: Queries.IndexPageQuery['allContentfulPost']['nodes']
+  posts: MdxNode[]
 }
 
 const Wrapper = styled(MasonryInfiniteGrid)`
@@ -38,23 +53,21 @@ export default function PostList({ posts }: PostListProps) {
         handleLoadPosts(nextGroupKey)
       }}
     >
-      {items.map(
-        ({
-          post: { title, date, category, thumbnail, description, slug },
-          groupKey,
-        }) => (
-          <PostItem
-            title={title as string}
-            date={date as string}
-            category={category as string[]}
-            thumbnail={thumbnail?.gatsbyImageData as IGatsbyImageData}
-            description={description?.description as string}
-            slug={slug as string}
-            key={slug as string}
-            data-grid-groupkey={groupKey}
-          />
-        ),
-      )}
+      {items.map(({ post: { frontmatter }, groupKey }) => (
+        <PostItem
+          title={frontmatter?.title as string}
+          date={frontmatter?.date as string}
+          category={frontmatter?.category as string[]}
+          thumbnail={
+            frontmatter?.thumbnail?.childImageSharp
+              ?.gatsbyImageData as IGatsbyImageData
+          }
+          description={frontmatter?.description as string}
+          slug={frontmatter?.slug as string}
+          key={frontmatter?.slug as string}
+          data-grid-groupkey={groupKey}
+        />
+      ))}
       {items.length < 3 ? <div /> : null}
     </Wrapper>
   )

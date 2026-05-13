@@ -1,13 +1,13 @@
-import { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 import styled from 'styled-components'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
-import useRenderRichText from '../../hooks/useRenderRichText'
 import Comment from './Comment'
 import TableOfContents from './TableOfContents'
 
 type PostBodyProps = {
-  content: Queries.ContentfulPostContent
+  children: ReactNode
+  tableOfContents: unknown
 }
 
 const Wrapper = styled.div`
@@ -41,18 +41,16 @@ const Content = styled.div`
   }
 `
 
-export default function PostBody({ content }: PostBodyProps) {
-  const richText = useRenderRichText(content)
-
+export default function PostBody({ children, tableOfContents }: PostBodyProps) {
   useEffect(Prism.highlightAll, [])
 
   return (
     <Wrapper>
       <Content>
-        <div id="content">{richText}</div>
+        <div id="content">{children}</div>
         <Comment />
       </Content>
-      <TableOfContents content={content} />
+      <TableOfContents tableOfContents={tableOfContents} />
     </Wrapper>
   )
 }

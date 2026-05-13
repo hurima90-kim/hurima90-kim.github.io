@@ -5,9 +5,13 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     const { createTypes } = actions
 
     createTypes(`
-    type ContentfulPostContent {
-      raw: String
-      references: [ContentfulAsset] @link(by: "contentful_id", from: "references___NODE")
-    }
-  `)
+      type MdxFrontmatter {
+        title: String
+        date: String
+        category: [String]
+        slug: String
+        description: String
+        thumbnail: File @fileByRelativePath
+      }
+    `)
   }
