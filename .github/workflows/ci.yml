@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # TypeScript 타입 체크 (package.json에 이미 있음)
+      - run: npm run typecheck
+
+      # ESLint
+      - run: npx eslint src --ext .ts,.tsx
+
+      # 빌드 검증
+      - run: npm run build
+        env:
+          NODE_ENV: production
+
+      # Lighthouse CI (선택)
+      - uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:9000
+          uploadArtifacts: true
