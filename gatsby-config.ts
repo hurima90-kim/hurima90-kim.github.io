@@ -37,7 +37,9 @@ const config: GatsbyConfig = {
     author: `Developer Kim`,
     siteUrl: `https://hurima90-kim.github.io`,
   },
-  graphqlTypegen: true,
+  graphqlTypegen: {
+    generateOnBuild: true,
+  },
   jsxRuntime: 'automatic',
   flags: {
     DEV_SSR: false,
