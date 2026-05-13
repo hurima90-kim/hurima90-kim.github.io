@@ -85,6 +85,14 @@ const config: GatsbyConfig = {
       __key: 'images',
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'post-images',
+        path: './content/images/',
+      },
+      __key: 'post-images',
+    },
+    {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: SITE_URL,
