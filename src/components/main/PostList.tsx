@@ -8,7 +8,7 @@ type MdxNode = {
   frontmatter?: {
     title?: string | null
     date?: string | null
-    category?: (string | null)[] | null
+    category?: readonly (string | null)[] | null
     slug?: string | null
     description?: string | null
     thumbnail?: {
