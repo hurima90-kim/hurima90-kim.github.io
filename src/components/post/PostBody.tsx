@@ -40,6 +40,21 @@ const Content = styled.div`
     max-width: 100%;
   }
 
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #d0d0d0;
+    padding: 8px 12px;
+  }
+
+  th {
+    background-color: #f5f5f5;
+  }
+
   @media (max-width: 768px) {
     gap: 50px;
     font-size: 14px;
