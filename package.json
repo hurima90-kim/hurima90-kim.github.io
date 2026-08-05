@@ -13,7 +13,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "build:vendor": "esbuild --bundle --platform=node --format=cjs --outfile=vendor/remark-gfm.cjs --external:node:* scripts/remark-gfm-entry.mjs"
+    "build:vendor": "esbuild --bundle --platform=node --format=cjs --outfile=vendor/remark-gfm.cjs --external:node:* scripts/remark-gfm-entry.mjs && esbuild --bundle --platform=node --format=cjs --outfile=vendor/github-slugger.cjs --external:node:* scripts/github-slugger-entry.mjs"
   },
   "dependencies": {
     "@egjs/react-infinitegrid": "^4.13.0",
@@ -50,6 +50,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
+    "github-slugger": "^2.0.0",
     "prettier": "^3.7.4",
     "remark-gfm": "^3.0.1",
     "typescript": "^5.3.3"

@@ -42,7 +42,9 @@ export default function useTableOfContents(tableOfContents: unknown) {
     )
 
     document
-      .querySelectorAll('#content h1, #content h2, #content h3')
+      .querySelectorAll(
+        '#content h1, #content h2, #content h3, #content h4, #content h5, #content h6',
+      )
       .forEach(element => observer.observe(element))
 
     return () => observer.disconnect()
