@@ -5,7 +5,6 @@ category: ['DevOps', 'Netwrok']
 description: 'DevOps에서 자주 보게될 Network 기본개념'
 slug: 'devops-network'
 thumbnail: '../images/network.png'
-
 ---
 
 ![DevOps에서 보는 Network](../images/network.png)
@@ -20,12 +19,12 @@ thumbnail: '../images/network.png'
 
 **서브넷** : 큰 네트워크를 작게 쪼갠 단위. 보통 Public Subnet(인터넷 직접 노출, LB용)과 Private Subnet(DB·내부 서버용, 외부 직접 접근 차단)으로 나눔
 
-| 대역           | 용도                                         |     |
-| -------------- | -------------------------------------------- | --- |
-| 127.0.0.0/8    | 루프백 (localhost). 자기 자신과 통신         |     |
-| 169.254.0.0/16 | 링크 로컬 (APIPA). DHCP 실패 시 자동 할당    |     |
-| 100.64.0.0/10  | CGN (Carrier-Grade NAT). ISP 내부에서 사용   |     |
-| 0.0.0.0/0      | 모든 IP를 의미 (라우팅/방화벽 규칙에서 사용) |     |
+| 대역           | 용도                                         |
+| -------------- | -------------------------------------------- |
+| 127.0.0.0/8    | 루프백 (localhost). 자기 자신과 통신         |
+| 169.254.0.0/16 | 링크 로컬 (APIPA). DHCP 실패 시 자동 할당    |
+| 100.64.0.0/10  | CGN (Carrier-Grade NAT). ISP 내부에서 사용   |
+| 0.0.0.0/0      | 모든 IP를 의미 (라우팅/방화벽 규칙에서 사용) |
 
 <br />
 
