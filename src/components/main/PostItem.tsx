@@ -16,6 +16,7 @@ const Wrapper = styled(Link)`
   flex-direction: column;
   overflow: hidden;
   width: 320px;
+  max-height: 330px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-decoration: none;
