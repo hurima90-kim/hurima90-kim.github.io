@@ -29,23 +29,27 @@ export default function useTableOfContents(tableOfContents: unknown) {
   }, [tableOfContents])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries =>
-        setActiveId(prevId => {
-          if (entries[0].boundingClientRect.top < 0) return entries[0].target.id
-          else {
-            const index = toc.findIndex(({ url }) => url === `#${prevId}`)
-            return index > 0 ? toc[index - 1].url.slice(1) : null
-          }
-        }),
-      { rootMargin: '0% 0px -100% 0px' },
+    const headings = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        '#content h1, #content h2, #content h3, #content h4, #content h5, #content h6',
+      ),
     )
 
-    document
-      .querySelectorAll(
-        '#content h1, #content h2, #content h3, #content h4, #content h5, #content h6',
-      )
-      .forEach(element => observer.observe(element))
+    const updateActiveId = () => {
+      let currentId: string | null = null
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top < 0) currentId = heading.id
+        else break
+      }
+      setActiveId(currentId)
+    }
+
+    const observer = new IntersectionObserver(updateActiveId, {
+      rootMargin: '0% 0px -100% 0px',
+    })
+
+    headings.forEach(element => observer.observe(element))
+    updateActiveId()
 
     return () => observer.disconnect()
   }, [toc])
